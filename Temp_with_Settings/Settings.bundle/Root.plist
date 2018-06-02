@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PreferenceSpecifiers</key>
+	<array>
+		<dict>
+			<key>General Info</key>
+			<string>Group</string>
+			<key>Title</key>
+			<string>General</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>Unit of Measure</string>
+			<key>Titles</key>
+			<array>
+				<string>Fahrenheit</string>
+				<string>Celsius</string>
+			</array>
+			<key>Key</key>
+			<string>measurement_pref</string>
+			<key>DefaultValue</key>
+			<string>Fahrenheit</string>
+			<key>Values</key>
+			<array>
+				<string>Fahrenheit</string>
+				<string>Celsius</string>
+			</array>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>Background Color</string>
+			<key>Key</key>
+			<string>bgcolor_pref</string>
+			<key>Titles</key>
+			<array>
+				<string>White</string>
+				<string>Green</string>
+				<string>Blue</string>
+			</array>
+			<key>DefaultValue</key>
+			<string>White</string>
+			<key>Values</key>
+			<array>
+				<string>White</string>
+				<string>Green</string>
+				<string>Blue</string>
+			</array>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Humidity Options</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Humidity</string>
+			<key>Key</key>
+			<string>hswitch_pref</string>
+			<key>DefaultValue</key>
+			<string>False</string>
+			<key>OnlyDisplayOnInterfaceIdiom</key>
+			<string>Phone</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Humidity %</string>
+			<key>Key</key>
+			<string>hpercent_pref</string>
+			<key>KeyboardType</key>
+			<string>NumberPad</string>
+		</dict>
+	</array>
+	<key>StringsTable</key>
+	<string>Root</string>
+</dict>
+</plist>
