@@ -107,7 +107,7 @@ namespace Temp_with_Settings{
             // Perform any additional setup after loading the view, typically from a nib.
 
             //Check settings
-            CheckSettings();
+            RefreshFields();
             //dismiss the keyboard on background touch
             View.AddGestureRecognizer(new UITapGestureRecognizer(() =>
             {
@@ -131,26 +131,40 @@ namespace Temp_with_Settings{
 
         }
 
+        NSObject observer = null;
         public override void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);
-            CheckSettings();
+            RefreshFields();
+            // Subscribe to the applicationWillEnterForeground notification
+            var app = UIApplication.SharedApplication;
+            // NSNotificationCenter.DefaultCenter.AddObserver (this, UIApplication.WillEnterForegroundNotification, "ApplicationWillEnterForeground", app);
+            // NSNotificationCenter.DefaultCenter.AddObserver (UIApplication.WillEnterForegroundNotification, ApplicationWillEnterForeground);
+            observer = NSNotificationCenter.DefaultCenter.AddObserver(aName: UIApplication.WillEnterForegroundNotification, notify: ApplicationWillEnterForeground, fromObject: app);
         }
 
-        private void CheckSettings()
+        // We will subscribe to the applicationWillEnterForeground notification
+        // so that this method is called when that notification occurs
+        private void ApplicationWillEnterForeground(NSNotification notification)
+        {
+            var defaults = NSUserDefaults.StandardUserDefaults;
+            defaults.Synchronize();
+            RefreshFields();
+        }
+
+        private void RefreshFields()
         {
             NSUserDefaults defaults = NSUserDefaults.StandardUserDefaults;
 
-            HumiditySwitch.On = defaults.BoolForKey("hswitch_pref");
+            HumiditySwitch.On = defaults.BoolForKey(Constants.HUMID_SWITCH_KEY);
             if (HumiditySwitch.On)
             {
                 HumidityField.Enabled = true;
-                HumidityField.Text = defaults.StringForKey("hpercent_pef");
+                HumidityField.Text = defaults.StringForKey(Constants.HUMID_PERCENT_KEY);
             }
 
-            Celsius = defaults.StringForKey("measurement_perf") == "Celsius";
-            //debug
-            Debug.WriteLine(Celsius);
+            Celsius = defaults.StringForKey(Constants.MEASUREMENT_KEY) == "Celsius";
+
         }
 
         public override void DidReceiveMemoryWarning()

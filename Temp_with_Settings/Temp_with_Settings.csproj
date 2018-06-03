@@ -114,6 +114,7 @@
     <Compile Include="calculate.cs" />
     <Compile Include="CalculationHistoryController.cs" />
     <Compile Include="CalculationHistoryController.designer.cs" />
+    <Compile Include="Constants.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Settings.bundle\Root.plist" />
