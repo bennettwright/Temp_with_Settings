@@ -67,8 +67,6 @@
 			<string>hswitch_pref</string>
 			<key>DefaultValue</key>
 			<string>False</string>
-			<key>OnlyDisplayOnInterfaceIdiom</key>
-			<string>Phone</string>
 		</dict>
 		<dict>
 			<key>Type</key>
@@ -79,6 +77,8 @@
 			<string>hpercent_pref</string>
 			<key>KeyboardType</key>
 			<string>NumberPad</string>
+			<key>DefaultValue</key>
+			<string>0</string>
 		</dict>
 	</array>
 	<key>StringsTable</key>

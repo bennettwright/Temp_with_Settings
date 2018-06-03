@@ -1,6 +1,7 @@
 ﻿using System;
-
+using Foundation;
 using UIKit;
+using System.Diagnostics;
 
 namespace Temp_with_Settings{
     public partial class ViewController : UIViewController
@@ -104,7 +105,9 @@ namespace Temp_with_Settings{
         {
             base.ViewDidLoad();
             // Perform any additional setup after loading the view, typically from a nib.
-           
+
+            //Check settings
+            CheckSettings();
             //dismiss the keyboard on background touch
             View.AddGestureRecognizer(new UITapGestureRecognizer(() =>
             {
@@ -128,7 +131,28 @@ namespace Temp_with_Settings{
 
         }
 
-       
+        public override void ViewWillAppear(bool animated)
+        {
+            base.ViewWillAppear(animated);
+            CheckSettings();
+        }
+
+        private void CheckSettings()
+        {
+            NSUserDefaults defaults = NSUserDefaults.StandardUserDefaults;
+
+            HumiditySwitch.On = defaults.BoolForKey("hswitch_pref");
+            if (HumiditySwitch.On)
+            {
+                HumidityField.Enabled = true;
+                HumidityField.Text = defaults.StringForKey("hpercent_pef");
+            }
+
+            Celsius = defaults.StringForKey("measurement_perf") == "Celsius";
+            //debug
+            Debug.WriteLine(Celsius);
+        }
+
         public override void DidReceiveMemoryWarning()
         {
             base.DidReceiveMemoryWarning();
