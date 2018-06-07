@@ -51,6 +51,15 @@ namespace Temp_with_Settings
             return index;
         }
 
-        public static double ToCelsius(int temp) => (temp - 32) * 5 / 9;
+        public static double MetricHeatIndex(double temp, double humidity) =>
+            getHeatIndex(ToFahrenheit(temp), humidity);
+
+        public static double MetricWindChill(double temp, int windSpeed) =>
+        getWindChill(ToFahrenheit(temp), (int)ToMPH(windSpeed));
+
+        private static double ToFahrenheit(double temp) => temp * 1.8 + 32;
+
+        private static double ToMPH(int kmph) => kmph * 0.6213711922;
+
     }
 }

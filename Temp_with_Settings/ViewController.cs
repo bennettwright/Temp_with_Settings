@@ -12,7 +12,7 @@ namespace Temp_with_Settings{
         }
 
 
-        public bool Celsius
+        public bool Metric
         {
             get;
             set;
@@ -28,31 +28,44 @@ namespace Temp_with_Settings{
             double humidity = Double.Parse(HumidityField.Text);
             int windspeed = (int)WindSlider.Value;
 
-            int result = HumiditySwitch.On ? (int)Math.Round(calculate.getHeatIndex(temp, humidity))
-                          : (int)Math.Round(calculate.getWindChill(temp, windspeed));
 
-            //if celsius is selected
-            if (Celsius)
-                result = (int)calculate.ToCelsius(result);
-                                  
-            if (HumiditySwitch.On)
+            if (!Metric)
             {
-                ResultLabel.Text = String.Format("Result: {0} ", result);
+                int result = HumiditySwitch.On ? (int)Math.Round(calculate.getHeatIndex(temp, humidity))
+                            : (int)Math.Round(calculate.getWindChill(temp, windspeed));
 
-                //make sure not all of them are zero (save memory)
-                if (temp != 0 && windspeed != 0 && result != 0)
-                    CalculationHistoryController.AddData(String.Format("Temp: {0}, Humidity: {1}, Result: {2} ",
-                        temp, humidity, result), Celsius);
+                //if celsius is selected
+                //if (Metric)
+                    //result = (int)calculate.ToCelsius(result);
+
+                ResultLabel.Text = $"Result: {result} F";
+
+                if (HumiditySwitch.On)
+                    if (temp != 0 && humidity != 0)
+                        CalculationHistoryController.AddData($"Temp: {temp}, Humidity: {humidity}, Result: {result} F");
+                
+                else
+                    if (temp != 0 && windspeed != 0)
+                        CalculationHistoryController.AddData($"Temp: {temp}, Wind speed: {windspeed}, Result: {result} F");
             }
 
-            else
-            {            
-                ResultLabel.Text = String.Format("Result: {0} ", result);
+            //Metric
+            else 
+            {
+                //calculate to english, get result, return to metric
+                //too lazy to write metric equation
+                int result = HumiditySwitch.On ? (int)Math.Round(calculate.MetricHeatIndex(temp, humidity)) :
+                                           (int)Math.Round(calculate.MetricWindChill(temp, windspeed));
+                
+                ResultLabel.Text = $"Result: {result} C";
 
-                //make sure not all of them are zero (save memory)
-                if(temp != 0 && windspeed != 0 && result != 0)
-                    CalculationHistoryController.AddData(String.Format("Temp: {0}, Wind speed: {1}, Result: {2} ",
-                        temp, windspeed, result), Celsius);
+                if (HumiditySwitch.On)
+                    if (temp != 0 && humidity != 0)
+                        CalculationHistoryController.AddData($"Temp: {temp}, Humidity: {humidity}, Result: {result} C");
+
+                    else
+                    if (temp != 0 && windspeed != 0)
+                        CalculationHistoryController.AddData($"Temp: {temp}, Wind speed: {windspeed}, Result: {result} C");
             }
 
 
@@ -113,6 +126,7 @@ namespace Temp_with_Settings{
             {
                 FahrenheitField.ResignFirstResponder();
                 HumidityField.ResignFirstResponder();
+                compute(null, null);
             }));
 
             //after editing, compute 
@@ -123,9 +137,10 @@ namespace Temp_with_Settings{
             //when slider value is changed, update UI
             WindSlider.ValueChanged += (sender, e) =>
             {
-                WindSpeedLabel.Text = String.Format("Wind Speed (0-100 mph): {0}",
-                                        (int)WindSlider.Value);
-              
+                //lazy, clean up kmph/mph
+                WindSpeedLabel.Text =  Metric ? $"Wind Speed (0-100 kph) {WindSlider.Value}" :
+                    $"Wind Speed (0-100 mph) {WindSlider.Value}";
+                
                 compute(sender, e);
             };
 
@@ -136,10 +151,9 @@ namespace Temp_with_Settings{
         {
             base.ViewWillAppear(animated);
             RefreshFields();
+
             // Subscribe to the applicationWillEnterForeground notification
             var app = UIApplication.SharedApplication;
-            // NSNotificationCenter.DefaultCenter.AddObserver (this, UIApplication.WillEnterForegroundNotification, "ApplicationWillEnterForeground", app);
-            // NSNotificationCenter.DefaultCenter.AddObserver (UIApplication.WillEnterForegroundNotification, ApplicationWillEnterForeground);
             observer = NSNotificationCenter.DefaultCenter.AddObserver(aName: UIApplication.WillEnterForegroundNotification, notify: ApplicationWillEnterForeground, fromObject: app);
         }
 
@@ -163,8 +177,24 @@ namespace Temp_with_Settings{
                 HumidityField.Text = defaults.StringForKey(Constants.HUMID_PERCENT_KEY);
             }
 
-            Celsius = defaults.StringForKey(Constants.MEASUREMENT_KEY) == "Celsius";
-
+            WindSlider.Value = defaults.IntForKey(Constants.WIND_SPEED_KEY);
+            WindSpeedLabel.Text = Metric ? $"Wind Speed (0-100 kph) {WindSlider.Value}" :
+                    $"Wind Speed (0-100 mph) {WindSlider.Value}";
+            Metric = defaults.StringForKey(Constants.MEASUREMENT_KEY) == "Metric";
+            string bgColor = defaults.StringForKey(Constants.BACKGROUND_KEY);
+            switch (bgColor)
+            {
+                case "White":
+                    View.BackgroundColor = UIColor.White;
+                    break;
+                case "Green":
+                    View.BackgroundColor = UIColor.Green;
+                    break;
+                case "Blue":
+                    View.BackgroundColor = UIColor.Blue;
+                    break;
+            }
+            compute(null, null);
         }
 
         public override void DidReceiveMemoryWarning()

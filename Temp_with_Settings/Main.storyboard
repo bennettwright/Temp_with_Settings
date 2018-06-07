@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6671">
-    <device id="retina4_7" orientation="landscape">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -17,12 +17,12 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="197" translatesAutoresizingMaskIntoConstraints="NO" image="Sunny">
-                                <rect key="frame" x="97.5" y="63.5" width="212" height="188"/>
+                                <rect key="frame" x="71.5" y="148.5" width="240" height="128"/>
                                 <constraints>
                                     <constraint id="1637" firstItem="197" firstAttribute="height" constant="128"/>
                                     <constraint id="1720" firstItem="197" firstAttribute="width" constant="240"/>
@@ -63,7 +63,7 @@
                                 </variation>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="198" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Degrees in Fahrenheit">
-                                <rect key="frame" x="330.5" y="170" width="240" height="30"/>
+                                <rect key="frame" x="72.5" y="389" width="240" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -73,13 +73,13 @@
                                 </constraints>
                             </textField>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0" minValue="0.0" maxValue="100" id="199" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="330.5" y="237" width="240" height="31"/>
+                                <rect key="frame" x="72.5" y="456" width="240" height="31"/>
                                 <constraints>
                                     <constraint id="1675" firstItem="199" firstAttribute="width" constant="236"/>
                                 </constraints>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wind Speed (0-100 mph):" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="201" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="330.5" y="208" width="189" height="21"/>
+                                <rect key="frame" x="72.5" y="427" width="189" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -89,13 +89,13 @@
                                 </constraints>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="203" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="329.5" y="102.5" width="51" height="31"/>
+                                <rect key="frame" x="71.5" y="321.5" width="51" height="31"/>
                                 <connections>
                                     <action selector="switchActionSheet:" destination="BYZ-38-t0r" id="1355" eventType="valueChanged"/>
                                 </connections>
                             </switch>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="204" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Humidity %" enabled="NO">
-                                <rect key="frame" x="406.5" y="101.5" width="163" height="30"/>
+                                <rect key="frame" x="148.5" y="320.5" width="163" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
@@ -104,7 +104,7 @@
                                 </constraints>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Result:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="206" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="99.5" y="265.5" width="212" height="47"/>
+                                <rect key="frame" x="72.5" y="500" width="212" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -141,7 +141,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Humidity:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1041" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="329.5" y="74.5" width="93" height="20"/>
+                                <rect key="frame" x="71.5" y="293.5" width="93" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -151,7 +151,7 @@
                                 </constraints>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1042" translatesAutoresizingMaskIntoConstraints="NO" text="Temperature:">
-                                <rect key="frame" x="321.5" y="141.5" width="128" height="20.5"/>
+                                <rect key="frame" x="63.5" y="360.5" width="128" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -270,12 +270,12 @@
                         <viewControllerLayoutGuide type="bottom" id="3410"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3413">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3436" translatesAutoresizingMaskIntoConstraints="NO" numberOfLines="22">
-                                <rect key="frame" x="240" y="29" width="213" height="317"/>
+                                <rect key="frame" x="87" y="87" width="213" height="317"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -332,7 +332,7 @@
             <objects>
                 <tableViewController id="3428" sceneMemberID="viewController" customClass="CalculationHistoryController" storyboardIdentifier="CalculationHistoryController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="3429">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <connections>
@@ -362,7 +362,7 @@
             <objects>
                 <tabBarController id="6671" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="6674">
-                        <rect key="frame" x="0.0" y="326" width="667" height="49"/>
+                        <rect key="frame" x="0.0" y="618" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>

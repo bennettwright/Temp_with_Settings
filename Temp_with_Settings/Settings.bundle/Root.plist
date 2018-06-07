@@ -8,7 +8,7 @@
 			<key>General Info</key>
 			<string>Group</string>
 			<key>Title</key>
-			<string>General</string>
+			<string>General Info</string>
 		</dict>
 		<dict>
 			<key>Type</key>
@@ -17,17 +17,17 @@
 			<string>Unit of Measure</string>
 			<key>Titles</key>
 			<array>
-				<string>Fahrenheit</string>
-				<string>Celsius</string>
+				<string>English</string>
+				<string>Metric</string>
 			</array>
 			<key>Key</key>
 			<string>measurement_pref</string>
 			<key>DefaultValue</key>
-			<string>Fahrenheit</string>
+			<string>English</string>
 			<key>Values</key>
 			<array>
-				<string>Fahrenheit</string>
-				<string>Celsius</string>
+				<string>English</string>
+				<string>Metric</string>
 			</array>
 		</dict>
 		<dict>
@@ -79,6 +79,26 @@
 			<string>NumberPad</string>
 			<key>DefaultValue</key>
 			<string>0</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Wind Speed</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSSliderSpecifier</string>
+			<key>Title</key>
+			<string>Wind Speed</string>
+			<key>Key</key>
+			<string>wspeed_pref</string>
+			<key>MaximumValue</key>
+			<real>100</real>
+			<key>MinimumValue</key>
+			<real>0</real>
+			<key>DefaultValue</key>
+			<real>0</real>
 		</dict>
 	</array>
 	<key>StringsTable</key>

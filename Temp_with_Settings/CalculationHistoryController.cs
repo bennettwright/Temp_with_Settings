@@ -2,19 +2,14 @@ using Foundation;
 using System;
 using UIKit;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Temp_with_Settings
 {
     public partial class CalculationHistoryController : UITableViewController
     {
-        public CalculationHistoryController (IntPtr handle) : base (handle)
-		{ }
-
-        ViewController controller;
-        public CalculationHistoryController(ViewController controller)
-        {
-            this.controller = controller;
-        }
+        public CalculationHistoryController(IntPtr handle) : base(handle)
+        { }
 
         private List<TableItem> coreData = new List<TableItem>();
         private static List<TableItem> data = new List<TableItem>();
@@ -25,15 +20,9 @@ namespace Temp_with_Settings
             HistoryTable.Source = new TableSource(coreData);
         }
 
-        //has to be a better way
-        public static void AddData(string dat, bool cel)
-        {
-            if (cel)
-                data.Add(new TableItem(dat + "C"));
-            else
-                data.Add(new TableItem(dat + "F"));
-            
-        }
+
+        public static void AddData(string dat) => data.Add(new TableItem(dat));
+
 
         public override void ViewWillAppear(bool animated)
         {
