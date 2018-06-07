@@ -41,11 +41,11 @@ namespace Temp_with_Settings{
                 ResultLabel.Text = $"Result: {result} F";
 
                 if (HumiditySwitch.On)
-                    if (temp != 0 && humidity != 0)
+                    if (temp != 0 || humidity != 0)
                         CalculationHistoryController.AddData($"Temp: {temp}, Humidity: {humidity}, Result: {result} F");
                 
                 else
-                    if (temp != 0 && windspeed != 0)
+                    if (temp != 0 || windspeed != 0)
                         CalculationHistoryController.AddData($"Temp: {temp}, Wind speed: {windspeed}, Result: {result} F");
             }
 
